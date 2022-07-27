@@ -4,9 +4,9 @@ import screenImg from '../../images/engin-akyurt-g-m8EDc4X6Q-unsplash 1.png'
 const ScreenProfessionally = () => {
   return (
     <div className='bg-secondary'>
-      <div className='max-w-7xl mx-auto flex py-24'>
-        <img className='max-w-[580px] max-h-[381px]' src={screenImg} alt="Screen Cleaning" />
-        <aside className='ml-20 flex flex-col justify-between'>
+      <div className='max-w-7xl mx-auto flex lg:flex-nowrap flex-wrap py-24'>
+        <img className='lg:max-w-[580px] lg:max-h-[381px] px-5' src={screenImg} alt="Screen Cleaning" />
+        <aside className='lg:ml-20 ml-5 flex flex-col justify-between mt-10'>
           <div>
             <h1 className=" text-4xl font-medium">
               Let us handle your screen <span className='text-primary'>Professionally</span>.
