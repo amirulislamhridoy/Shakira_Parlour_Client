@@ -31,11 +31,11 @@ const Header = () => {
         </div>
         <div className="navbar-end lg:hidden">
         <div className="dropdown dropdown-end">
-            <label tabindex="0" className="btn btn-ghost lg:hidden">
+            <label tabIndex="0" className="btn btn-ghost lg:hidden">
               <FontAwesomeIcon className='h-5 w-5' icon={faBars} />
             </label>
             <ul
-              tabindex="0"
+              tabIndex="0"
               className="menu menu-compact dropdown-content mt-3 mr-4 p-2 shadow bg-base-100 rounded-box w-36"
             >{btn}
             </ul>

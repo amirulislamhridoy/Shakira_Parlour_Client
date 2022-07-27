@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from './Banner';
 import ScreenProfessionally from './ScreenProfessionally';
 import Services from './Services';
+import HandleProject from './HandleProject'
 
 const LandingPage = () => {
     return (
@@ -9,6 +10,7 @@ const LandingPage = () => {
             <Banner />
             <Services />
             <ScreenProfessionally />
+            <HandleProject />
         </main>
     );
 };
