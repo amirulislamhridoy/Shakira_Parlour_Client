@@ -7,17 +7,17 @@
         "description": "We craft stunning and amazing web UI, using a web drafted UX to fit your product."
     },
     {
-        "_id": "01",
-        "name": "Anti Age Face Treatment",
-        "taka": "199",
+        "_id": "02",
+        "name": "Hair Color & Styleing",
+        "taka": "99",
         "img": "https://i.ibb.co/5FdvT54/Group-1372.png          ",
-        "description": "We craft stunning and amazing web UI, using a web drafted UX to fit your product."
+        "description": "Amazing flyers, social media posts and brand representations that would make your brand stand out."
     },
     {
-        "_id": "01",
-        "name": "Anti Age Face Treatment",
-        "taka": "199",
+        "_id": "03",
+        "name": "Skin Care Treatment",
+        "taka": "299",
         "img":"https://i.ibb.co/TL4HsNg/Group-1374.png",
-        "description": "We craft stunning and amazing web UI, using a web drafted UX to fit your product."
+        "description": "With well written codes. We build amazing apps for all platforms, mobile and web apps in general."
     }
 ]

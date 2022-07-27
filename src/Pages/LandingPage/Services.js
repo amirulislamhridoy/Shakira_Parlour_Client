@@ -12,8 +12,11 @@ const Services = () => {
     return (
         <section className='max-w-7xl mx-auto'>
             <h2 className='text-4xl font-bold text-center mt-20 mb-16'>Our Awesome <span className='text-primary'>Services</span></h2>
-            <div>
-            {services.map(service => <SingleService service={service}></SingleService>)}
+            <div className='flex justify-between'>
+                {services.map(service => <SingleService service={service}></SingleService>)}
+            </div>
+            <div className='mt-7 mb-10 text-center'>
+                <button className='btn btn-primary text-white'>Explore more</button>
             </div>
         </section>
     );

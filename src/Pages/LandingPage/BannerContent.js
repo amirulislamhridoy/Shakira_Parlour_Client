@@ -7,7 +7,7 @@ const BannerContent = () => {
             <div className='flex-1 lg:mb-0 mb-5'>
                 <h1 className='text-5xl font-bold leading-tight'>BEAUTY SALON <br /> FOR EVERY WOMEN</h1>
                 <p className='text-base mt-6 mb-8 max-w-[400px]'>Our salon service is very good. Because our employees are very experienced. They can finish work smoothly.</p>
-                <button className='btn btn-primary'>Get an Appointment</button>
+                <button className='btn btn-primary text-white'>Get an Appointment</button>
             </div>
             <div className=''>
                 <img className='mx-auto max-w-[484px] max-h-[478px] rounded-xl' src={bannerImg} alt="Girl Photo" />
