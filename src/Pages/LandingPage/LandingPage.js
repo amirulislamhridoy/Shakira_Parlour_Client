@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import ScreenProfessionally from './ScreenProfessionally';
 import Services from './Services';
 
 const LandingPage = () => {
@@ -7,6 +8,7 @@ const LandingPage = () => {
         <main className=''>
             <Banner />
             <Services />
+            <ScreenProfessionally />
         </main>
     );
 };
