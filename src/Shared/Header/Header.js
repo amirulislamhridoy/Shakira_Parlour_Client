@@ -1,6 +1,8 @@
 import React from "react";
 import icon from "../../icons/icons_without_bg.png";
 import {Link} from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
   const btn = (
@@ -9,7 +11,7 @@ const Header = () => {
       <li><Link to='/ourPortfolio'>Our Portfolio</Link></li>
       <li><Link to='/ourTeam'>Our Team</Link></li>
       <li><Link to='/contactUs'>Contact Us</Link></li>
-      <li><Link to='/login'>Login</Link></li>
+      <li><Link className='' to='/login'>Login</Link></li>
     </>
   );
   return (
@@ -29,20 +31,7 @@ const Header = () => {
         <div class="navbar-end lg:hidden">
         <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <FontAwesomeIcon className='h-5 w-5' icon={faBars} />
             </label>
             <ul
               tabindex="0"
@@ -52,6 +41,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      
     </nav>
   );
 };
