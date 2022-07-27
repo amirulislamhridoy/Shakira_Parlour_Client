@@ -1,11 +1,13 @@
 import React from 'react';
-import Header from '../../Shared/Header/Header';
+import Banner from './Banner';
+import Services from './Services';
 
 const LandingPage = () => {
     return (
-        <div>
-            <Header />
-        </div>
+        <main className=''>
+            <Banner />
+            <Services />
+        </main>
     );
 };
 
