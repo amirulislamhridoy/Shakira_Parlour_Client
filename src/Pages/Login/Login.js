@@ -1,16 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
 import fb from '../../icons/fb.png'
 import gl from '../../icons/Group 573.png'
+import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
 
 const Login = () => {
     const password = useRef(null)
-  const [confirmP, setConfirmP] = useState('')
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [signInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(auth);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const currentPassword = password.current.value
+
   };
     return (
         <section>
@@ -33,13 +37,6 @@ const Login = () => {
               required
             />
             <input
-              type="password"
-              className="border-b-2 w-full mt-7"
-              placeholder="Confirm Password"
-              onChange={(e) => setConfirmP(e.target.value)}
-              required
-            />
-            <input
               className="btn btn-primary w-full text-white mt-7"
               type="submit"
               value="Create an account"
@@ -57,12 +54,12 @@ const Login = () => {
         </div>
         <div className='mx-14'>
             <div className="divider">OR</div>
-            <button className='btn btn-ghost w-full rounded-full border-secondary border-2 flex'>
+            <button onClick={() => signInWithFacebook()} className='btn btn-ghost w-full rounded-full border-secondary border-2 flex'>
                 <img className='w-8' src={fb} alt='' />
                 <span className='flex-1'>Continue with Facebook</span>
             </button>
             <br />
-            <button className='btn btn-ghost w-full rounded-full border-secondary border-2 flex'>
+            <button onClick={() => signInWithGoogle()} className='btn btn-ghost w-full rounded-full border-secondary border-2 flex'>
                 <img className='w-7' src={gl} al='' />
                 <span className='flex-1'>Continue with Google</span>
             </button>

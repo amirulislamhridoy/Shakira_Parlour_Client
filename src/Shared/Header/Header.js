@@ -1,18 +1,29 @@
 import React from "react";
 import icon from "../../icons/icons_without_bg.png";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import CustomLink from "../CustomLink/CustomLink";
+import auth from '../../firebase.init'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate()
+  
+  function logout(){
+    signOut(auth);
+    navigate('/login')
+  };
   const btn = (
     <>
       <li><CustomLink to='/'>Home</CustomLink></li>
       <li><Link to='/ourPortfolio'>Our Portfolio</Link></li>
       <li><Link to='/ourTeam'>Our Team</Link></li>
       <li><Link to='/contactUs'>Contact Us</Link></li>
-      <li><Link className='btn text-white px-9 bg-primary border-0' to='/login'>Login</Link></li>
+      {user ? <li><Link onClick={logout} className='btn text-white px-9 bg-primary border-0' to='/login'>Log out</Link></li> : 
+      <li><Link className='btn text-white px-9 bg-primary border-0' to='/login'>Login</Link></li>}
     </>
   );
   return (
