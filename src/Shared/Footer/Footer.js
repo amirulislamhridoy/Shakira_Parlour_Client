@@ -9,7 +9,7 @@ import you from '../../icons/Vector-3.png'
 const Footer = () => {
   return (
     <footer className='bg-primary'>
-      <div class="footer p-10 text-base-content max-w-7xl mx-auto pt-14 pb-24">
+      <div className="footer p-10 text-base-content max-w-7xl mx-auto pt-14 pb-24">
         <div>
           <p>
           <FontAwesomeIcon className='mr-2 text-xl' icon={faLocationDot} />
@@ -19,29 +19,29 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <span class="footer-title ">Company</span>
-          <a class="link link-hover">About</a>
-          <a class="link link-hover">Project</a>
-          <a class="link link-hover">Our Team</a>
-          <a class="link link-hover">Terms Conditions</a>
-          <a class="link link-hover">Submit Listing</a>
+          <span className="footer-title ">Company</span>
+          <a className="link link-hover">About</a>
+          <a className="link link-hover">Project</a>
+          <a className="link link-hover">Our Team</a>
+          <a className="link link-hover">Terms Conditions</a>
+          <a className="link link-hover">Submit Listing</a>
         </div>
         <div>
-          <span class="footer-title">Quick Links</span>
-          <a class="link link-hover">Quick Links</a>
-          <a class="link link-hover">Rentals</a>
-          <a class="link link-hover">Sales</a>
-          <a class="link link-hover">Contact</a>
-          <a class="link link-hover">Our blog</a>
+          <span className="footer-title">Quick Links</span>
+          <a className="link link-hover">Quick Links</a>
+          <a className="link link-hover">Rentals</a>
+          <a className="link link-hover">Sales</a>
+          <a className="link link-hover">Contact</a>
+          <a className="link link-hover">Our blog</a>
         </div>
         <div>
-          <span class="footer-title">About us</span>
+          <span className="footer-title">About us</span>
           <p>Lorem ipsum</p>
           <div className='flex items-center'>
-          <a class="link link-hover"><img className='w-10 mx-2' src={fb} alt=''/></a>
-          <a class="link link-hover"><img className='w-10 mx-2' src={ins} alt=''/></a>
-          <a class="link link-hover"><img className='w-10 mx-2' src={lin} alt=''/></a>
-          <a class="link link-hover"><img className='w-10 mx-2' src={you} alt=''/></a>
+          <a className="link link-hover"><img className='w-10 mx-2' src={fb} alt=''/></a>
+          <a className="link link-hover"><img className='w-10 mx-2' src={ins} alt=''/></a>
+          <a className="link link-hover"><img className='w-10 mx-2' src={lin} alt=''/></a>
+          <a className="link link-hover"><img className='w-10 mx-2' src={you} alt=''/></a>
           </div>
         </div>
       </div>

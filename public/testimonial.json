@@ -1,6 +1,7 @@
 [
     {
         "_id": "01",
+        "img": "https://i.ibb.co/wQ7d6gm/Ellipse-90.png",
         "name": "Nash Patrik",
         "designation": "CE0, Manpol",
         "description": "Lorem ipsum dolor sit amet, consectetur adpiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat.",
@@ -8,6 +9,7 @@
     },
     {
         "_id": "02",
+        "img": "https://i.ibb.co/Tkvh24z/Ellipse-92.png",
         "name": "Miriam Barron",
         "designation": "CE0, Manpol",
         "description": "Lorem ipsum dolor sit amet, consectetur adpiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat.",
@@ -15,6 +17,7 @@
     },
     {
         "_id": "03",
+        "img": "https://i.ibb.co/5X0j59p/Ellipse-91.png",
         "name": "Bria Malone",
         "designation": "CE0, Manpol",
         "description": "Lorem ipsum dolor sit amet, consectetur adpiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat.",
@@ -22,6 +25,7 @@
     },
     {
         "_id": "04",
+        "img": "https://i.ibb.co/wQ7d6gm/Ellipse-90.png",
         "name": "Nash Patrik2",
         "designation": "CE0, Manpol",
         "description": "Lorem ipsum dolor sit amet, consectetur adpiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat.",
@@ -29,6 +33,7 @@
     },
     {
         "_id": "05",
+        "img": "https://i.ibb.co/Tkvh24z/Ellipse-92.png",
         "name": "Miriam Barron2",
         "designation": "CE0, Manpol",
         "description": "Lorem ipsum dolor sit amet, consectetur adpiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat.",
@@ -36,6 +41,7 @@
     },
     {
         "_id": "06",
+        "img": "https://i.ibb.co/5X0j59p/Ellipse-91.png",
         "name": "Bria Malone2",
         "designation": "CE0, Manpol",
         "description": "Lorem ipsum dolor sit amet, consectetur adpiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat.",

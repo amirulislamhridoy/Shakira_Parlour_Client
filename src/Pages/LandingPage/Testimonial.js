@@ -6,13 +6,6 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const Testimonial = () => {
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 3,
-  //   slidesToScroll: 3
-  // };
   var settings = {
     dots: true,
     infinite: false,
@@ -48,12 +41,12 @@ const Testimonial = () => {
       <div className="">
         <Slider {...settings}>
           {ratings.map((rating) => (
-            <div class="card w-96">
-              <div class="card-body">
+            <div className="card w-96" key={rating._id}>
+              <div className="card-body">
                 <div className='flex mb-3'>
-                  <div class="avatar mr-4">
-                    <div class="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src="https://placeimg.com/192/192/people" />
+                  <div className="avatar mr-4">
+                    <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <img src={rating.img} alt='' />
                     </div>
                   </div>
                   <div>
@@ -62,7 +55,9 @@ const Testimonial = () => {
                   </div>
                 </div>
                 <p className='mb-3'>{rating.description}</p>
-                <p>{rating.rating}</p>
+                <p>
+                  {/* {[...Array(rating.rating).keys()]} */}
+                </p>
               </div>
             </div>
           ))}

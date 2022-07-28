@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
 import fb from '../../icons/fb.png'
 import gl from '../../icons/Group 573.png'
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const password = useRef(null)
@@ -11,9 +12,14 @@ const Register = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const currentPassword = password.current.value
-
-
+    const matchPassword = currentPassword === confirmP
+    if(!matchPassword){
+      return toast.error("Password don't match.")
+    }
+    const fullName = e.target.firstName?.value + " " + e.target.lastName?.value
+    
   };
+
   return (
     <section>
       <Header />
