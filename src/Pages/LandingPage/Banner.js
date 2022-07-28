@@ -4,7 +4,7 @@ import BannerContent from './BannerContent';
 
 const Banner = () => {
     return (
-        <section className="bg-secondary lg:pt-8 pt-0">
+        <section className="bg-secondary">
             <div className='max-w-7xl mx-auto'>
                 <Header />
                 <BannerContent />

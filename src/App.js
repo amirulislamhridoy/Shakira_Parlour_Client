@@ -7,6 +7,7 @@ import OurPortfolio from './Pages/OurPortfolio/OurPortfolio';
 import OurTeam from './Pages/OurTeam/OurTeam';
 import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import Register from './Pages/Login/Register';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/ourTeam' element={<OurTeam />} />
         <Route path='/contactUs' element={<ContactUs />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
       <ToastContainer />
     </div>
