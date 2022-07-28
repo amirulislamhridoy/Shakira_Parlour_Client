@@ -5,9 +5,10 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import Login from './Pages/Login/Login';
 import OurPortfolio from './Pages/OurPortfolio/OurPortfolio';
 import OurTeam from './Pages/OurTeam/OurTeam';
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const i = './images/Ellipse 90.png'
   return (
     <div>
       <Routes>
@@ -17,7 +18,7 @@ function App() {
         <Route path='/contactUs' element={<ContactUs />} />
         <Route path='/login' element={<Login />} />
       </Routes>
-      
+      <ToastContainer />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Banner from './Banner';
 import ScreenProfessionally from './ScreenProfessionally';
 import Services from './Services';
 import HandleProject from './HandleProject'
+import Footer from '../../Shared/Footer/Footer';
 
 const LandingPage = () => {
     return (
@@ -11,6 +12,7 @@ const LandingPage = () => {
             <Services />
             <ScreenProfessionally />
             <HandleProject />
+            <Footer />
         </main>
     );
 };
