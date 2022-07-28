@@ -4,6 +4,7 @@ import ScreenProfessionally from './ScreenProfessionally';
 import Services from './Services';
 import HandleProject from './HandleProject'
 import Footer from '../../Shared/Footer/Footer';
+import Testimonial from './Testimonial';
 
 const LandingPage = () => {
     return (
@@ -11,6 +12,7 @@ const LandingPage = () => {
             <Banner />
             <Services />
             <ScreenProfessionally />
+            <Testimonial />
             <HandleProject />
             <Footer />
         </main>
