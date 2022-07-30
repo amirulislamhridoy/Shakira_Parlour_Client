@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
 import fb from '../../icons/fb.png'
 import gl from '../../icons/Group 573.png'
@@ -9,11 +9,12 @@ import auth from '../../firebase.init'
 
 const Register = () => {
   const password = useRef(null)
+  const navigate = useNavigate()
   const [confirmP, setConfirmP] = useState('')
   const [updateProfile, updating, uError] = useUpdateProfile(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(auth);
-  const [ createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const [ createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -28,8 +29,12 @@ const Register = () => {
     await updateProfile({displayName: fullName})
   };
 
+  if(gUser || fUser || user){
+    navigate('/')
+  }
+
   return (
-    <section>
+    <section className='max-w-7xl mx-auto'>
       <Header />
       <div className='max-w-[500px] sm:mx-auto mx-2'>
         <div className="border border-2 rounded px-10 pt-5 pb-2 mt-5">

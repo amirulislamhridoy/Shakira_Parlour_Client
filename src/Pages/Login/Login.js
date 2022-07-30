@@ -1,23 +1,29 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
 import fb from '../../icons/fb.png'
 import gl from '../../icons/Group 573.png'
-import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
 
 const Login = () => {
     const password = useRef(null)
+    const navigate = useNavigate()
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(auth);
+    const [signInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(auth);
+    const [signInWithEmailAndPassword,user,loading,error,] = useSignInWithEmailAndPassword(auth);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const currentPassword = password.current.value
-
+    const email = e.target.email.value
+    signInWithEmailAndPassword(email, currentPassword)
   };
+  if(gUser || fUser || user){
+    navigate('/')
+  }
     return (
-        <section>
+        <section className='max-w-7xl mx-auto'>
       <Header />
       <div className='max-w-[500px] sm:mx-auto mx-2'>
         <div className="border border-2 rounded px-10 pt-5 pb-2 mt-5">
@@ -26,7 +32,7 @@ const Login = () => {
             <input
               className="border-b-2 w-full mt-7"
               placeholder="Username of Email"
-              email="email"
+              name="email"
               required
             />
             <input

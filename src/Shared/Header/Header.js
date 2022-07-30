@@ -30,7 +30,7 @@ const Header = () => {
     <nav>
       <div className="navbar">
         <div className="navbar-start">
-          <Link to='' className="btn btn-ghost">
+          <Link to='/' className="btn btn-ghost">
             <img className="w-10" src={icon} alt="" />
             <span><b>Shakira</b> <br /> Parlour</span>
           </Link>
@@ -47,7 +47,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 mr-4 p-2 shadow bg-base-100 rounded-box w-36"
+              className="menu menu-compact dropdown-content mt-3 mr-4 p-2 shadow bg-base-100 rounded-box w-40"
             >{btn}
             </ul>
           </div>
