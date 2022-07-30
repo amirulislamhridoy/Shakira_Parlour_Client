@@ -19,21 +19,21 @@ const Header = () => {
   const btn = (
     <>
       <li><CustomLink to='/'>Home</CustomLink></li>
-      <li><Link to='/ourPortfolio'>Our Portfolio</Link></li>
-      <li><Link to='/ourTeam'>Our Team</Link></li>
-      <li><Link to='/contactUs'>Contact Us</Link></li>
+      <li><CustomLink to='/ourPortfolio'>Our Portfolio</CustomLink></li>
+      <li><CustomLink to='/ourTeam'>Our Team</CustomLink></li>
+      <li><CustomLink to='/contactUs'>Contact Us</CustomLink></li>
       {user ? <li><Link onClick={logout} className='btn text-white px-9 bg-primary border-0' to='/login'>Log out</Link></li> : 
-      <li><Link className='btn text-white px-9 bg-primary border-0' to='/login'>Login</Link></li>}
+      <li><CustomLink className='btn text-white px-9 bg-primary border-0' to='/login'>Login</CustomLink></li>}
     </>
   );
   return (
     <nav>
       <div className="navbar">
         <div className="navbar-start">
-          <Link to='/' className="btn btn-ghost">
+          <CustomLink to='/' className="btn btn-ghost">
             <img className="w-10" src={icon} alt="" />
             <span><b>Shakira</b> <br /> Parlour</span>
-          </Link>
+          </CustomLink>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">

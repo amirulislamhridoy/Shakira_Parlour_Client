@@ -47,8 +47,8 @@ const LoginHeader = () => {
           </Link>
         </div>
 
-        <div class="navbar-center hidden lg:flex">
-          <ul class="menu menu-horizontal p-0">{btn}</ul>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal p-0">{btn}</ul>
         </div>
 
         <div className="navbar-end hidden lg:flex">
