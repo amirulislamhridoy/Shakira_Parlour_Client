@@ -59,6 +59,21 @@ const OurPortfolio = () => {
               <i className="fa-solid fa-bars-progress"></i>Manage Services
               </PortfolioCustomLink>
             </li>
+            <li>
+              <PortfolioCustomLink to="/ourPortfolio/book">
+              <i class="fa-solid fa-cart-shopping"></i>Book
+              </PortfolioCustomLink>
+            </li>
+            <li>
+              <PortfolioCustomLink to="/ourPortfolio/bookingList">
+              <FontAwesomeIcon className="h-5 w-5" icon={faBasketShopping} />Booking List
+              </PortfolioCustomLink>
+            </li>
+            <li>
+              <PortfolioCustomLink to="/ourPortfolio/review">
+              <i class="fa-solid fa-message"></i>Review
+              </PortfolioCustomLink>
+            </li> 
           </ul>
         </div>
       </div>

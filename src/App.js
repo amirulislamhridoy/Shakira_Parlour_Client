@@ -12,6 +12,9 @@ import OrderList from './Pages/OurPortfolio/OrderList'
 import AddService from './Pages/OurPortfolio/AddService'
 import MakeAdmin from './Pages/OurPortfolio/MakeAdmin'
 import ManageServices from './Pages/OurPortfolio/ManageServices'
+import Book from './Pages/OurPortfolio/Book';
+import BookingList from './Pages/OurPortfolio/BookingList';
+import Review from './Pages/OurPortfolio/Review';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
           <Route path=':addService' element={<AddService />} />
           <Route path='makeAdmin' element={<MakeAdmin />} />
           <Route path='manageServices' element={<ManageServices />} />
+          <Route path='book' element={<Book />} />
+          <Route path='bookingList' element={<BookingList />} />
+          <Route path='review' element={<Review />} />
         </Route>
         <Route path='/ourTeam' element={<OurTeam />} />
         <Route path='/contactUs' element={<ContactUs />} />
