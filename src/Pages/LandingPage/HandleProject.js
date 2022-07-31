@@ -31,6 +31,7 @@ const HandleProject = () => {
                 placeholder="Full Name"
                 name="fName"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control md:w-5/12 md:mt-0 mt-3">
@@ -39,6 +40,7 @@ const HandleProject = () => {
                 placeholder="Last Name"
                 name="lName"
                 className="input input-bordered"
+                required
               />
             </div>
           </div>
@@ -49,6 +51,7 @@ const HandleProject = () => {
                 placeholder="Email Address"
                 name="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control md:w-5/12 md:mt-0 mt-3">
@@ -57,6 +60,7 @@ const HandleProject = () => {
                 placeholder="Phone Number"
                 name="phn"
                 className="input input-bordered"
+                required
               />
             </div>
           </div>
@@ -66,6 +70,7 @@ const HandleProject = () => {
               placeholder="Your Message"
               name="message"
               className="input input-bordered h-24"
+              required
             />
           </div>
           <div className="text-center pt-3 pb-12">

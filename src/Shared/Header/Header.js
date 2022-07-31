@@ -23,17 +23,17 @@ const Header = () => {
       <li><CustomLink to='/ourTeam'>Our Team</CustomLink></li>
       <li><CustomLink to='/contactUs'>Contact Us</CustomLink></li>
       {user ? <li><Link onClick={logout} className='btn text-white px-9 bg-primary border-0' to='/login'>Log out</Link></li> : 
-      <li><CustomLink className='btn text-white px-9 bg-primary border-0' to='/login'>Login</CustomLink></li>}
+      <li ><CustomLink className='btn btn-primary px-7 text-white' to='/login'>Login</CustomLink></li>}
     </>
   );
   return (
     <nav>
       <div className="navbar">
         <div className="navbar-start">
-          <CustomLink to='/' className="btn btn-ghost">
+          <Link to='/' className="btn btn-ghost">
             <img className="w-10" src={icon} alt="" />
             <span><b>Shakira</b> <br /> Parlour</span>
-          </CustomLink>
+          </Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -47,7 +47,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 mr-4 p-2 shadow bg-base-100 rounded-box w-"
+              className="menu menu-compact dropdown-content mt-3 mr-4 p-2 shadow bg-base-100 rounded-box w-48"
             >{btn}
             </ul>
           </div>

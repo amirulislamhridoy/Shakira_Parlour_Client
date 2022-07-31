@@ -1,8 +1,9 @@
+import React from "react";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import OurPortfolioHeader from "./OurPortfolioHeader";
+import PortfolioCustomLink from "./PortfolioCustomLink";
 
 const OurPortfolio = () => {
   return (
@@ -17,46 +18,46 @@ const OurPortfolio = () => {
           >
             Open drawer
           </label>
-          hello
+          <Outlet />
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
             <li>
-              <Link to="/">
+              <PortfolioCustomLink to="/ourPortfolio">
                 <FontAwesomeIcon className="h-5 w-5" icon={faBasketShopping} />
                 Order List
-              </Link>
+              </PortfolioCustomLink>
             </li>
             <li>
-              <Link to="/">
+              <PortfolioCustomLink to="/ourPortfolio/addService">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M12 4v16m8-8H4"
                   />
                 </svg>
                 Add service
-              </Link>
+              </PortfolioCustomLink>
             </li>
             <li>
-              <Link to="/">
-                <i class="fa-solid fa-user-plus"></i>
+              <PortfolioCustomLink to="/ourPortfolio/makeAdmin">
+                <i className="fa-solid fa-user-plus"></i>
                 Make Admin
-              </Link>
+              </PortfolioCustomLink>
             </li>
             <li>
-              <Link to="/">
-              <i class="fa-solid fa-bars-progress"></i>Manage Services
-              </Link>
+              <PortfolioCustomLink to="/ourPortfolio/manageServices">
+              <i className="fa-solid fa-bars-progress"></i>Manage Services
+              </PortfolioCustomLink>
             </li>
           </ul>
         </div>

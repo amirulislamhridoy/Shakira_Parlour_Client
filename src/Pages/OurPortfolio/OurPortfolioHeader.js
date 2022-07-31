@@ -1,10 +1,25 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useLocation } from 'react-router-dom';
+import auth from '../../firebase.init';
 import icon from '../../icons/icons_without_bg.png'
 
-const OurPortfolioHeader = ({children}) => {
+const OurPortfolioHeader = () => {
+  const location = useLocation()
+  const [user, loading, error] = useAuthState(auth);
+  let locationName;
+  
+  if(location.pathname === '/ourPortfolio'){
+    locationName = 'Order List'
+  }else if(location.pathname === '/ourPortfolio/addService'){
+    locationName = 'Add Service'
+  }else if(location.pathname === '/ourPortfolio/makeAdmin'){
+    locationName = 'Make Admin'
+  }else if(location.pathname === '/ourPortfolio/manageServices'){
+    locationName = 'Manage Services'
+  }
     return (
         <nav>
       <div className="navbar">
@@ -16,12 +31,12 @@ const OurPortfolioHeader = ({children}) => {
         </div>
         <div className="navbar-center hidden lg:flex w-3/5">
           <ul className="menu menu-horizontal p-0">
-            {children}
+            <b className='text-2xl'>{locationName}</b>
           </ul>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <li className='mr-4'>end</li>
+            <li className='mr-4'>{user?.displayName}</li>
           </ul>
         </div>
         <div className="navbar-end lg:hidden">

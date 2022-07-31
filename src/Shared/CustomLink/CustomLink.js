@@ -5,17 +5,16 @@ import {
     useResolvedPath,
   } from "react-router-dom";
 
-const CustomLink = ({to, children}) => {
+const CustomLink = ({to, className, children}) => {
     const resolved = useResolvedPath(to)
     let match = useMatch({ path: resolved.pathname, end: true });
 
     return (
-        <div>
             <Link to={to}
-            style={{fontWeight: match && 'bold'}}>
+            style={{fontWeight: match && 'bold'}}
+            className={className}>
                 {children}
             </Link>
-        </div>
     );
 };
 
