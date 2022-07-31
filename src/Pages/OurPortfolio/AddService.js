@@ -22,7 +22,9 @@ const AddService = () => {
                   placeholder="Enter title"
                   id="serviceTitle"
                   className="input input-bordered"
+                  {...register('title', { required: true })}
                 />
+                {errors.title && <p className='text-error'>Service Title is required</p>}
               </div>
               <div className="form-control lg:w-5/12">
                 <label className="label" htmlFor='image'>
@@ -33,6 +35,7 @@ const AddService = () => {
                   name="file"
                   id='image'
                   placeholder="Upload Image"
+                  {...register('image', { required: true })}
                   className="text-sm text-grey-500
                 file:mr-5 file:py-3 file:px-10
                 file:rounded-full file:border-0
@@ -40,6 +43,7 @@ const AddService = () => {
                 file:bg-gradient-to-r file:from-blue-600 file:to-amber-600
                 hover:file:cursor-pointer hover:file:opacity-80 "
                 />
+                {errors.image && <p className='text-error'>Image is required</p>}
               </div>
             </div>
             <div className="form-control lg:w-5/12">
@@ -53,7 +57,10 @@ const AddService = () => {
                 id='description'
                 placeholder="Enter Description"
                 className="input input-bordered h-32"
+                {...register('description', { required: true, minLength: {value: 20, message: 'Your description will be minium 20 words.'} })}
               />
+              <p className='text-error'>{errors.description?.type === 'required' && "Description is required"}</p>
+              <p className='text-error'>{errors.description?.message}</p>
             </div>
           </div>
         </div>
