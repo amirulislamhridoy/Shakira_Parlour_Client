@@ -5,6 +5,11 @@ const AddService = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
+  // const fn = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.files)
+  // }
+
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -68,6 +73,8 @@ const AddService = () => {
           <input className='cursor-pointer ml-auto mr-10 px-6 btn-sm btn btn-primary text-white' type="submit" />
           </div>
       </form>
+
+      {/* <input onChange={fn} type='file'></input> */}
     </section>
   );
 };

@@ -15,13 +15,16 @@ import ManageServices from './Pages/OurPortfolio/ManageServices'
 import Book from './Pages/OurPortfolio/Book';
 import BookingList from './Pages/OurPortfolio/BookingList';
 import Review from './Pages/OurPortfolio/Review';
+import RequireAuth from './Shared/RequireAuth/RequireAuth';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/ourPortfolio' element={<OurPortfolio />}>
+        <Route path='/ourPortfolio' element={<RequireAuth>
+          <OurPortfolio />
+        </RequireAuth>}>
           <Route index element={<OrderList />} />
           <Route path=':addService' element={<AddService />} />
           <Route path='makeAdmin' element={<MakeAdmin />} />
@@ -30,6 +33,7 @@ function App() {
           <Route path='bookingList' element={<BookingList />} />
           <Route path='review' element={<Review />} />
         </Route>
+
         <Route path='/ourTeam' element={<OurTeam />} />
         <Route path='/contactUs' element={<ContactUs />} />
         <Route path='/login' element={<Login />} />

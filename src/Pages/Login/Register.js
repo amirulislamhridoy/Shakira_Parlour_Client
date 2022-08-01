@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useSignInWithGoogle, useSignInWithFacebook, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
 import LoginHeader from './LoginHeader'
+import useToken from "../../hook/userToken";
 
 const Register = () => {
   const password = useRef(null)
@@ -29,9 +30,8 @@ const Register = () => {
     await updateProfile({displayName: fullName})
   };
 
-  if(gUser || fUser || user){
-    navigate('/')
-  }
+  const [token] = useToken(user || gUser || fUser)
+  if(token){navigate('/')}
 
   return (
     <section className='max-w-7xl mx-auto'>
