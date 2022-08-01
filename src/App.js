@@ -16,12 +16,14 @@ import Book from './Pages/OurPortfolio/Book';
 import BookingList from './Pages/OurPortfolio/BookingList';
 import Review from './Pages/OurPortfolio/Review';
 import RequireAuth from './Shared/RequireAuth/RequireAuth';
+import SingleServiceRoute from './Pages/LandingPage/SingleServiceRoute';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path='/' element={<LandingPage />} />
+        <Route path='/service/:id' element={<SingleServiceRoute />} />
         <Route path='/ourPortfolio' element={<RequireAuth>
           <OurPortfolio />
         </RequireAuth>}>

@@ -60,7 +60,7 @@ const Testimonial = () => {
                   {/* {[...Array(rating.rating).keys()]} */}
                   <StarRatingComponent className='text-2xl'
                     name="rate1"
-                    starCount={rating.rating}
+                    string={rating.rating}
                     value={5}
                     // onStarClick={this.onStarClick.bind(this)}
                   />

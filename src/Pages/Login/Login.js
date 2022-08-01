@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import fb from "../../icons/fb.png";
 import gl from "../../icons/Group 573.png";
 import {
@@ -14,6 +14,7 @@ import useToken from "../../hook/userToken";
 const Login = () => {
   const password = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithFacebook, fUser, fLoading, fError] =
     useSignInWithFacebook(auth);
@@ -28,9 +29,10 @@ const Login = () => {
   };
 
   const [token] = useToken(user || gUser || fUser)
+  let from = location.state?.from?.pathname || "/";
 
   if(token){
-    navigate('/')
+    navigate(from)
   }
 
   return (

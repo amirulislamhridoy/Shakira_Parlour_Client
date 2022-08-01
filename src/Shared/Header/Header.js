@@ -14,6 +14,7 @@ const Header = () => {
   
   function logout(){
     signOut(auth);
+    localStorage.removeItem("accessToken")
     navigate('/login')
   };
   const btn = (
