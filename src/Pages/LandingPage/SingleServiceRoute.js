@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Header from "../../Shared/Header/Header";
 import auth from "../../firebase.init";
@@ -10,20 +9,40 @@ import { toast } from "react-toastify";
 const SingleServiceRoute = () => {
   const { id } = useParams();
   const [service, setService] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/service/${id}`).then((res) => {
-      setService(res.data);
-    }).catch(err => {
-      if(err.response.status === 403 || err.response.status === 401){
-        toast.error(err.response.data.message)
-        signOut(auth);
-        localStorage.removeItem("accessToken")
-        navigate('/login')
-      }
-    });
+    axios
+      .get(`http://localhost:5000/service/${id}`)
+      .then((res) => {
+        setService(res.data);
+      })
+      .catch((err) => {
+        if (err.response.status === 403 || err.response.status === 401) {
+          toast.error(err.response.data.message);
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+      });
   }, []);
+
+  const booking = (service) => {
+    const booking = {
+      name: service.name,
+      taka: service.taka,
+      img: service.img,
+      description: service.description
+    }
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      body: JSON.stringify(booking),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((json) => toast('Your Booking is success.'));
+  };
   return (
     <div>
       <Header />
@@ -35,6 +54,12 @@ const SingleServiceRoute = () => {
           </h2>
           <p className="text-primary font-medium">${service?.taka}</p>
           <p>{service?.description}</p>
+          <button
+            onClick={() => booking(service)}
+            className="btn btn-primary text-white"
+          >
+            Book
+          </button>
         </div>
       </div>
     </div>
