@@ -11,10 +11,10 @@ const AddService = () => {
   } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  // const fn = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.files)
-  // }
+  const uploadFn = () => {
+    const uploadedImg = document.getElementById('image')
+    uploadedImg.click()
+  }
 
   return (
     <section>
@@ -44,18 +44,19 @@ const AddService = () => {
                   <span className="label-text font-bold text-xl">Image</span>
                 </label>
 
-                <div className='border-2 p-2 rounded-xl relative w-48 overflow-hidden'>
-                  <div className='flex items-center '>
-                    <img className='w-12' src={uploadImg} alt='' />
-                    <b className='ml-1'>Upload image</b>
-                  </div>
+                <div className='relative p-3'>
                   <input
                     type="file"
-                    name="file"
+                    name="image"
+                    id='image'
                     placeholder="Upload Image"
                     {...register("image", { required: true })}
-                    className="absolute scale-[3] top-2 left-0 opacity-0 cursor-pointer"
+                    className="scale-125 translate-x-1/4"
                   />
+                  <div onClick={uploadFn} className='flex items-center absolute top-0 left-1 bg-base-100 border-2 rounded-xl'>
+                    <img className='w-12' src={uploadImg} alt='' />
+                    <b className='pr-3'>Upload image</b>
+                  </div>
                 </div>
                 {errors.image && (
                   <p className="text-error">Image is required</p>
@@ -96,8 +97,6 @@ const AddService = () => {
           />
         </div>
       </form>
-
-      {/* <input onChange={fn} type='file'></input> */}
     </section>
   );
 };

@@ -14,9 +14,9 @@ const Dashboard = () => {
         <div className="drawer-content items-center bg-accent">
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-sm mt-2 btn-primary drawer-button lg:hidden"
           >
-            Open drawer
+            Open Sidebar
           </label>
           <Outlet />
         </div>
