@@ -44,7 +44,7 @@ const DashboardHeader = () => {
         </div>
         <div className="navbar-end ">
           <div className="dropdown dropdown-end">
-            <btn className="btn btn-ghost btn-sm">{user?.displayName}</btn>
+            <button className="btn btn-ghost btn-sm">{user?.displayName}</button>
           </div>
         </div>
       </div>
