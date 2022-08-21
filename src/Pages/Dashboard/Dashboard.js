@@ -7,7 +7,7 @@ import PortfolioCustomLink from "./PortfolioCustomLink";
 
 const Dashboard = () => {
   return (
-    <main className="max-w-7xl mx-auto">
+    <section className="max-w-7xl mx-auto">
       <DashboardHeader />
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -77,7 +77,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

@@ -17,6 +17,7 @@ import BookingList from './Pages/Dashboard/BookingList';
 import Review from './Pages/Dashboard/Review';
 import RequireAuth from './Shared/RequireAuth/RequireAuth';
 import SingleServiceRoute from './Pages/LandingPage/SingleServiceRoute';
+import OurPortfolio from './Pages/OurPortfolio/OurPortfolio';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         </Route>
 
         <Route path='/ourTeam' element={<OurTeam />} />
+        <Route path='/ourPortfolio' element={<OurPortfolio />} />
         <Route path='/contactUs' element={<ContactUs />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

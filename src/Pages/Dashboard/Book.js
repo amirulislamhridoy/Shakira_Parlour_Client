@@ -37,12 +37,12 @@ const Book = () => {
       <span>Pay with</span>
       <br />
       <div className="flex">
-        <input className="mr-1" type="radio" />
+        <input className="mr-1" type="radio" name='payment' />
         <label className="flex">
           <img className="w-5 mr-1" src={Card} alt="" />
           Creadit Card
         </label>
-        <input className="mr-1 ml-8" type="radio" />
+        <input className="mr-1 ml-8" type="radio" name='payment' />
         <label className="flex">
           <img className="w-5 mr-1" src={paypal} alt="" />
           Paypal

@@ -20,9 +20,10 @@ const Header = () => {
   const btn = (
     <>
       <li><CustomLink to='/'>Home</CustomLink></li>
-      <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
-      <li><CustomLink to='/ourTeam'>Our Team</CustomLink></li>
-      <li><CustomLink to='/contactUs'>Contact Us</CustomLink></li>
+      {user && <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>}
+      <li><CustomLink to='/ourPortfolio' className='lg:w-[125px]'>Our Portfolio</CustomLink></li>
+      <li><CustomLink to='/ourTeam' className='lg:w-[105px]'>Our Team</CustomLink></li>
+      <li><CustomLink to='/contactUs' className='lg:w-[110px]'>Contact Us</CustomLink></li>
       {user ? <li><Link onClick={logout} className='btn text-white px-9 bg-primary border-0' to='/login'>Log out</Link></li> : 
       <li ><CustomLink className='btn btn-primary px-7 text-white' to='/login'>Login</CustomLink></li>}
     </>
