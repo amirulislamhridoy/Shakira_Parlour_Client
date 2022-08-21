@@ -1,9 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import uploadImg from '../../icons/cloud-upload-outline 1.png'
 
 const AddService = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
 
   // const fn = (e) => {
   //   e.preventDefault();
@@ -27,51 +33,68 @@ const AddService = () => {
                   placeholder="Enter title"
                   id="serviceTitle"
                   className="input input-bordered"
-                  {...register('title', { required: true })}
+                  {...register("title", { required: true })}
                 />
-                {errors.title && <p className='text-error'>Service Title is required</p>}
+                {errors.title && (
+                  <p className="text-error">Service Title is required</p>
+                )}
               </div>
               <div className="form-control lg:w-5/12">
-                <label className="label" htmlFor='image'>
+                <label className="label">
                   <span className="label-text font-bold text-xl">Image</span>
                 </label>
-                <input
-                  type="file"
-                  name="file"
-                  id='image'
-                  placeholder="Upload Image"
-                  {...register('image', { required: true })}
-                  className="text-sm text-grey-500
-                file:mr-5 file:py-3 file:px-10
-                file:rounded-full file:border-0
-                file:text-md file:font-semibold  file:text-white
-                file:bg-gradient-to-r file:from-blue-600 file:to-amber-600
-                hover:file:cursor-pointer hover:file:opacity-80 "
-                />
-                {errors.image && <p className='text-error'>Image is required</p>}
+
+                <div className='border-2 p-2 rounded-xl relative w-48 overflow-hidden'>
+                  <div className='flex items-center '>
+                    <img className='w-12' src={uploadImg} alt='' />
+                    <b className='ml-1'>Upload image</b>
+                  </div>
+                  <input
+                    type="file"
+                    name="file"
+                    placeholder="Upload Image"
+                    {...register("image", { required: true })}
+                    className="absolute scale-[3] top-2 left-0 opacity-0 cursor-pointer"
+                  />
+                </div>
+                {errors.image && (
+                  <p className="text-error">Image is required</p>
+                )}
               </div>
             </div>
             <div className="form-control lg:w-5/12">
-              <label className="label" htmlFor='description'>
+              <label className="label" htmlFor="description">
                 <span className="label-text font-bold text-xl">
                   Description
                 </span>
               </label>
               <textarea
                 type="text"
-                id='description'
+                id="description"
                 placeholder="Enter Description"
                 className="input input-bordered h-32"
-                {...register('description', { required: true, minLength: {value: 20, message: 'Your description will be minium 20 words.'} })}
+                {...register("description", {
+                  required: true,
+                  minLength: {
+                    value: 20,
+                    message: "Your description will be minium 20 words.",
+                  },
+                })}
               />
-              <p className='text-error'>{errors.description?.type === 'required' && "Description is required"}</p>
-              <p className='text-error'>{errors.description?.message}</p>
+              <p className="text-error">
+                {errors.description?.type === "required" &&
+                  "Description is required"}
+              </p>
+              <p className="text-error">{errors.description?.message}</p>
             </div>
           </div>
         </div>
-          <div className='flex flex-end'>
-          <input className='cursor-pointer ml-auto mr-10 px-6 btn-sm btn btn-primary text-white' type="submit" />
-          </div>
+        <div className="flex flex-end">
+          <input
+            className="cursor-pointer ml-auto mr-10 px-6 btn-sm btn btn-primary text-white"
+            type="submit"
+          />
+        </div>
       </form>
 
       {/* <input onChange={fn} type='file'></input> */}
