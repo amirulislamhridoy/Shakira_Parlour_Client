@@ -51,9 +51,9 @@ const AddService = () => {
                     id='image'
                     placeholder="Upload Image"
                     {...register("image", { required: true })}
-                    className="scale-125 translate-x-1/4"
+                    className="scale-125 translate-x-1/4 cursor-pointer"
                   />
-                  <div onClick={uploadFn} className='flex items-center absolute top-0 left-1 bg-base-100 border-2 rounded-xl'>
+                  <div onClick={uploadFn} className='flex items-center absolute top-0 left-1 bg-base-100 border-2 rounded-xl cursor-pointer'>
                     <img className='w-12' src={uploadImg} alt='' />
                     <b className='pr-3'>Upload image</b>
                   </div>

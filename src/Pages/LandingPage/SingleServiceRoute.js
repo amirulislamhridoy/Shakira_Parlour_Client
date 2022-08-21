@@ -5,11 +5,13 @@ import Header from "../../Shared/Header/Header";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const SingleServiceRoute = () => {
   const { id } = useParams();
   const [service, setService] = useState({});
   const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
     axios
@@ -29,10 +31,11 @@ const SingleServiceRoute = () => {
 
   const booking = (service) => {
     const booking = {
-      name: service.name,
+      serviceName: service.name,
       taka: service.taka,
       img: service.img,
-      description: service.description
+      name: user?.displayName,
+      email: user?.email
     }
     fetch("http://localhost:5000/order", {
       method: "POST",
