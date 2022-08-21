@@ -5,16 +5,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Login from './Pages/Login/Login';
-import OurPortfolio from './Pages/OurPortfolio/OurPortfolio';
+import Dashboard from './Pages/Dashboard/Dashboard';
 import OurTeam from './Pages/OurTeam/OurTeam';
 import Register from './Pages/Login/Register';
-import OrderList from './Pages/OurPortfolio/OrderList'
-import AddService from './Pages/OurPortfolio/AddService'
-import MakeAdmin from './Pages/OurPortfolio/MakeAdmin'
-import ManageServices from './Pages/OurPortfolio/ManageServices'
-import Book from './Pages/OurPortfolio/Book';
-import BookingList from './Pages/OurPortfolio/BookingList';
-import Review from './Pages/OurPortfolio/Review';
+import OrderList from './Pages/Dashboard/OrderList'
+import AddService from './Pages/Dashboard/AddService'
+import MakeAdmin from './Pages/Dashboard/MakeAdmin'
+import ManageServices from './Pages/Dashboard/ManageServices'
+import Book from './Pages/Dashboard/Book';
+import BookingList from './Pages/Dashboard/BookingList';
+import Review from './Pages/Dashboard/Review';
 import RequireAuth from './Shared/RequireAuth/RequireAuth';
 import SingleServiceRoute from './Pages/LandingPage/SingleServiceRoute';
 
@@ -24,8 +24,8 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/service/:id' element={<SingleServiceRoute />} />
-        <Route path='/ourPortfolio' element={<RequireAuth>
-          <OurPortfolio />
+        <Route path='/dashboard' element={<RequireAuth>
+          <Dashboard />
         </RequireAuth>}>
           <Route index element={<OrderList />} />
           <Route path=':addService' element={<AddService />} />

@@ -6,18 +6,18 @@ import { Link, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import icon from '../../icons/icons_without_bg.png'
 
-const OurPortfolioHeader = () => {
+const DashboardHeader = () => {
   const location = useLocation()
   const [user, loading, error] = useAuthState(auth);
   let locationName;
   
-  if(location.pathname === '/ourPortfolio'){
+  if(location.pathname === '/dashboard'){
     locationName = 'Order List'
-  }else if(location.pathname === '/ourPortfolio/addService'){
+  }else if(location.pathname === '/dashboard/addService'){
     locationName = 'Add Service'
-  }else if(location.pathname === '/ourPortfolio/makeAdmin'){
+  }else if(location.pathname === '/dashboard/makeAdmin'){
     locationName = 'Make Admin'
-  }else if(location.pathname === '/ourPortfolio/manageServices'){
+  }else if(location.pathname === '/dashboard/manageServices'){
     locationName = 'Manage Services'
   }
     return (
@@ -58,4 +58,4 @@ const OurPortfolioHeader = () => {
     );
 };
 
-export default OurPortfolioHeader;
+export default DashboardHeader;

@@ -11,7 +11,7 @@ const HandleProject = () => {
     emailjs.sendForm('service_7fj6sbs', 'template_bl7s1t6', form.current, 'Tugul1FsyxfeGPbUp')
       .then((result) => {
           e.target.reset();
-          toast.success('success')
+          toast.success('Your message is send.')
       }, (error) => {
         console.log(error)
       });

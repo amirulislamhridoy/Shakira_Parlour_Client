@@ -10,6 +10,7 @@ import {
 import auth from "../../firebase.init";
 import LoginHeader from "./LoginHeader";
 import useToken from "../../hook/userToken";
+import { useEffect } from "react";
 
 const Login = () => {
   const password = useRef(null);
@@ -31,9 +32,11 @@ const Login = () => {
   const [token] = useToken(user || gUser || fUser)
   let from = location.state?.from?.pathname || "/";
 
-  if(token){
-    navigate(from)
-  }
+  useEffect(() => {
+    if(token){
+      navigate(from)
+    }
+  }, [navigate, from, token])
 
   return (
     <section className="max-w-7xl mx-auto">

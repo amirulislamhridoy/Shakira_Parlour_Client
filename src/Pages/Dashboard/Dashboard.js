@@ -2,13 +2,13 @@ import React from "react";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Outlet } from "react-router-dom";
-import OurPortfolioHeader from "./OurPortfolioHeader";
+import DashboardHeader from "./DashboardHeader";
 import PortfolioCustomLink from "./PortfolioCustomLink";
 
-const OurPortfolio = () => {
+const Dashboard = () => {
   return (
     <main className="max-w-7xl mx-auto">
-      <OurPortfolioHeader />
+      <DashboardHeader />
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content items-center bg-accent">
@@ -24,13 +24,13 @@ const OurPortfolio = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
             <li>
-              <PortfolioCustomLink to="/ourPortfolio">
+              <PortfolioCustomLink to="/dashboard">
                 <FontAwesomeIcon className="h-5 w-5" icon={faBasketShopping} />
                 Order List
               </PortfolioCustomLink>
             </li>
             <li>
-              <PortfolioCustomLink to="/ourPortfolio/addService">
+              <PortfolioCustomLink to="/dashboard/addService">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -49,29 +49,29 @@ const OurPortfolio = () => {
               </PortfolioCustomLink>
             </li>
             <li>
-              <PortfolioCustomLink to="/ourPortfolio/makeAdmin">
+              <PortfolioCustomLink to="/dashboard/makeAdmin">
                 <i className="fa-solid fa-user-plus"></i>
                 Make Admin
               </PortfolioCustomLink>
             </li>
             <li>
-              <PortfolioCustomLink to="/ourPortfolio/manageServices">
+              <PortfolioCustomLink to="/dashboard/manageServices">
               <i className="fa-solid fa-bars-progress"></i>Manage Services
               </PortfolioCustomLink>
             </li>
             <li>
-              <PortfolioCustomLink to="/ourPortfolio/book">
-              <i class="fa-solid fa-cart-shopping"></i>Book
+              <PortfolioCustomLink to="/dashboard/book">
+              <i className="fa-solid fa-cart-shopping"></i>Book
               </PortfolioCustomLink>
             </li>
             <li>
-              <PortfolioCustomLink to="/ourPortfolio/bookingList">
+              <PortfolioCustomLink to="/dashboard/bookingList">
               <FontAwesomeIcon className="h-5 w-5" icon={faBasketShopping} />Booking List
               </PortfolioCustomLink>
             </li>
             <li>
-              <PortfolioCustomLink to="/ourPortfolio/review">
-              <i class="fa-solid fa-message"></i>Review
+              <PortfolioCustomLink to="/dashboard/review">
+              <i className="fa-solid fa-message"></i>Review
               </PortfolioCustomLink>
             </li> 
           </ul>
@@ -81,4 +81,4 @@ const OurPortfolio = () => {
   );
 };
 
-export default OurPortfolio;
+export default Dashboard;

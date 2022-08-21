@@ -57,12 +57,10 @@ const Testimonial = () => {
                 </div>
                 <p className="mb-3">{rating.description}</p>
                 <p>
-                  {/* {[...Array(rating.rating).keys()]} */}
                   <StarRatingComponent className='text-2xl'
                     name="rate1"
                     string={rating.rating}
                     value={5}
-                    // onStarClick={this.onStarClick.bind(this)}
                   />
                 </p>
               </div>

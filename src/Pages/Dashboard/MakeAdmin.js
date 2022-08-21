@@ -4,8 +4,8 @@ const MakeAdmin = () => {
   return (
     <section>
       <form>
-        <div class="card m-10 min-h-[250px] bg-base-100 shadow-xl">
-          <div class="card-body">
+        <div className="card m-10 min-h-[250px] bg-base-100 shadow-xl">
+          <div className="card-body">
             <label className='font-bold text-xl' htmlFor='email'>Email</label>
             <div className=''>
             <input
