@@ -4,8 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Outlet } from "react-router-dom";
 import DashboardHeader from "./DashboardHeader";
 import PortfolioCustomLink from "./PortfolioCustomLink";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from "../../firebase.init";
+import useAdmin from "../../hook/useAdmin";
 
 const Dashboard = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const [admin] = useAdmin(user)
+  
   return (
     <section className="max-w-7xl mx-auto">
       <DashboardHeader />
@@ -23,7 +29,8 @@ const Dashboard = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
-            <li>
+            {admin && <>
+              <li>
               <PortfolioCustomLink to="/dashboard">
                 <FontAwesomeIcon className="h-5 w-5" icon={faBasketShopping} />
                 Order List
@@ -59,7 +66,9 @@ const Dashboard = () => {
               <i className="fa-solid fa-bars-progress"></i>Manage Services
               </PortfolioCustomLink>
             </li>
-            <li>
+            </>}
+            {admin || <>
+              <li>
               <PortfolioCustomLink to="/dashboard/book">
               <i className="fa-solid fa-cart-shopping"></i>Book
               </PortfolioCustomLink>
@@ -73,7 +82,8 @@ const Dashboard = () => {
               <PortfolioCustomLink to="/dashboard/review">
               <i className="fa-solid fa-message"></i>Review
               </PortfolioCustomLink>
-            </li> 
+            </li>
+            </>} 
           </ul>
         </div>
       </div>

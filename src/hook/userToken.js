@@ -3,10 +3,11 @@ import { useState } from "react"
 const useToken = (user) => {
     const [token, setToken] = useState('')
     const email = user?.user?.email
+    const name = user?.user?.displayName
     if(email){
         fetch(`http://localhost:5000/login/${email}`, {
-        method: "POST",
-        body: JSON.stringify({email}),
+        method: "PUT",
+        body: JSON.stringify({name: name, email: email}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
