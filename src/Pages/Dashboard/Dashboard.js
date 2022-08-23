@@ -29,7 +29,7 @@ const Dashboard = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
-            {admin && <>
+            {admin ? <>
               <li>
               <PortfolioCustomLink to="/dashboard">
                 <FontAwesomeIcon className="h-5 w-5" icon={faBasketShopping} />
@@ -66,10 +66,10 @@ const Dashboard = () => {
               <i className="fa-solid fa-bars-progress"></i>Manage Services
               </PortfolioCustomLink>
             </li>
-            </>}
-            {admin || <>
+            </>
+            : <>
               <li>
-              <PortfolioCustomLink to="/dashboard/book">
+              <PortfolioCustomLink to="/dashboard">
               <i className="fa-solid fa-cart-shopping"></i>Book
               </PortfolioCustomLink>
             </li>

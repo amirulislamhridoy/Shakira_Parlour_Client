@@ -9,8 +9,19 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
+import { useQuery } from '@tanstack/react-query'
+import Loading from '../../Shared/Loading/Loading'
 
 const Book = () => {
+  const [user, loading] = useAuthState(auth);
+  const { isLoading, error, data } = useQuery(['repoData'], () =>
+    fetch('http://localhost:5000/serviceOnly').then(res =>
+      res.json()
+    )
+  )
+  if(isLoading){return <Loading />}
   const stripePromise = loadStripe(
     "pk_test_51L3yxyGxDf7DYIvzB2dADBrYRLv1V6ynAao5VILfSswUx6XUNts49HImSyLVwIBcx9HPvXz17bEpK5EVFNhIOcYl00TB8aBnAO"
   );
@@ -21,16 +32,20 @@ const Book = () => {
         placeholder="Name"
         id="serviceTitle"
         className="input rounded-none w-7/12 my-1"
+        value={user?.displayName}
+        readOnly
       />
       <input
         type="email"
         placeholder="jon@gmail.com"
         id="serviceTitle"
         className="input rounded-none w-7/12 my-1"
+        value={user?.email}
+        readOnly
       />
       <br />
       <select className="input rounded-none w-7/12 my-1">
-        <option value="Anti Age Face Treatment">Anti Age Face Treatment</option>
+        {data.map(service => <option value={service.name} key={service._id}>{service.name}</option>)}
       </select>
       <br />
       <br />

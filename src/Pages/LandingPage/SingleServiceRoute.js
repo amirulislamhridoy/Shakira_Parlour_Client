@@ -35,7 +35,9 @@ const SingleServiceRoute = () => {
       taka: service.taka,
       img: service.img,
       name: user?.displayName,
-      email: user?.email
+      email: user?.email,
+      description: service?.description,
+      payment: "pay",
     }
     fetch("http://localhost:5000/order", {
       method: "POST",

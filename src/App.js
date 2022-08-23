@@ -18,8 +18,13 @@ import Review from './Pages/Dashboard/Review';
 import RequireAuth from './Shared/RequireAuth/RequireAuth';
 import SingleServiceRoute from './Pages/LandingPage/SingleServiceRoute';
 import OurPortfolio from './Pages/OurPortfolio/OurPortfolio';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
+import useAdmin from './hook/useAdmin';
 
 function App() {
+  const [user, loading, error] = useAuthState(auth);
+  const [admin] =useAdmin(user)
   return (
     <div>
       <Routes>
@@ -28,11 +33,12 @@ function App() {
         <Route path='/dashboard' element={<RequireAuth>
           <Dashboard />
         </RequireAuth>}>
-          <Route index element={<OrderList />} />
+          {admin ? <Route index element={<OrderList />} />
+          :
+          <Route index element={<Book />} />}
           <Route path=':addService' element={<AddService />} />
           <Route path='makeAdmin' element={<MakeAdmin />} />
           <Route path='manageServices' element={<ManageServices />} />
-          <Route path='book' element={<Book />} />
           <Route path='bookingList' element={<BookingList />} />
           <Route path='review' element={<Review />} />
         </Route>
