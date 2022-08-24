@@ -5,19 +5,22 @@ import Header from "../../Shared/Header/Header";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { format } from "date-fns";
+import "react-day-picker/dist/style.css";
+import { DayPicker } from "react-day-picker";
 
-const SingleServiceRoute = () => {
+const SingleServiceRoute = ({ date, setDate }) => {
   const { id } = useParams();
   const [service, setService] = useState({});
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
+  let footer = format(date, "PP");
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/service/${id}`)
       .then((res) => {
-        console.log(res)
         setService(res.data);
       })
       .catch((err) => {
@@ -39,7 +42,8 @@ const SingleServiceRoute = () => {
       email: user?.email,
       description: service?.description,
       payment: "pay",
-    }
+      date: footer,
+    };
     fetch("http://localhost:5000/order", {
       method: "POST",
       body: JSON.stringify(booking),
@@ -47,25 +51,40 @@ const SingleServiceRoute = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
-      .then((json) => toast('Your Booking is success.'));
+      .then((response) => response.json())
+      .then((json) => {
+        if(json?.message){
+          toast.error(json.message)
+        }else{
+          toast('Your Booking is success.')
+        }
+      });
   };
   return (
     <div>
       <Header />
-      <div className="card w-96 bg-base-100 text-center drop-shadow-xl mx-auto my-2.5 mt-10">
-        <div className="card-body">
-          <img className="w-14 mx-auto" src={service?.img} alt="" />
-          <h2 className="text-2xl font-semibold text-center">
-            {service?.name}
-          </h2>
-          <p className="text-primary font-medium">${service?.taka}</p>
-          <p>{service?.description}</p>
-          <button
-            onClick={() => booking(service)}
-            className="btn btn-primary text-white"
-          >
-            Book
-          </button>
+
+      <div className="flex flex-col items-center mt-5">
+        <div className="card shadow-xl w-[355px] p-5">
+          <DayPicker mode="single" selected={date} onSelect={setDate} />
+          <b>{footer}</b>
+        </div>
+
+        <div className="card w-96 bg-base-100 text-center drop-shadow-xl mt-5">
+          <div className="card-body">
+            <img className="w-14 mx-auto" src={service?.img} alt="" />
+            <h2 className="text-2xl font-semibold text-center">
+              {service?.name}
+            </h2>
+            <p className="text-primary font-medium">${service?.taka}</p>
+            <p>{service?.description}</p>
+            <button
+              onClick={() => booking(service)}
+              className="btn btn-primary text-white"
+            >
+              Book
+            </button>
+          </div>
         </div>
       </div>
     </div>
