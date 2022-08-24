@@ -24,7 +24,7 @@ const Book = ({date, setDate}) => {
     date = new Date();
   }
   let footer = format(date, "PP");
-  const { isLoading, error, data } = useQuery(["repoData"], () =>
+  const { isLoading, error, data } = useQuery(["bookedService", date], () =>
     fetch(`http://localhost:5000/willBook?email=${user?.email}&date=${footer}`).then((res) =>
       res.json()
     )
@@ -68,18 +68,18 @@ const Book = ({date, setDate}) => {
     setPrice(priceService?.taka);
   };
   return (
-    <section className="md:mt-10 md:mx-10">
+    <section className="md:mt-10 md:mx-10 lg:flex flex-row-reverse justify-end gap-5">
       <div className="card shadow-xl w-[320px] sm:w-[355px] p-2 sm:p-5 bg-base-100 mb-5">
         <DayPicker mode="single" selected={date} onSelect={setDate} />
         <b>{footer}</b>
       </div>
 
-      <div>
+      <div className='flex-1'>
         <input
           type="text"
           placeholder="Name"
           id="serviceTitle"
-          className="input rounded-none w-7/12 my-1"
+          className="input rounded-none w-7/12 lg:w-full my-1"
           value={user?.displayName}
           readOnly
         />
@@ -87,14 +87,14 @@ const Book = ({date, setDate}) => {
           type="email"
           placeholder="jon@gmail.com"
           id="serviceTitle"
-          className="input rounded-none w-7/12 my-1"
+          className="input rounded-none w-7/12 lg:w-full my-1"
           value={user?.email}
           readOnly
         />
         <br />
         <select
           onChange={(e) => changeFn(e.target.value)}
-          className="input rounded-none w-7/12 my-1"
+          className="input rounded-none w-7/12 lg:w-full my-1"
         >
           <option>Please Select Your Service</option>
           {data.map((service) => (

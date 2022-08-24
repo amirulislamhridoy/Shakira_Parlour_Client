@@ -5,8 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import axios from "axios";
 import StarRatingComponent from "react-star-rating-component";
+import Ellips from '../../images/Ellipse 91.png'
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Testimonial = () => {
+  const [user, loading] = useAuthState(auth);
   var settings = {
     dots: true,
     infinite: false,
@@ -16,7 +20,7 @@ const Testimonial = () => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -24,7 +28,7 @@ const Testimonial = () => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 580,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -34,20 +38,21 @@ const Testimonial = () => {
   };
   const [ratings, setRatings] = useState([]);
   useEffect(() => {
-    axios.get("testimonial.json").then((res) => setRatings(res.data));
+    axios.get("http://localhost:5000/allTestimonial").then((res) => setRatings(res.data));
   }, []);
+
   return (
     <div className="max-w-7xl mx-auto mt-16 mb-20">
       <h1 className="text-center text-4xl font-bold mb-5">Testimonials</h1>
       <div className="">
         <Slider {...settings}>
           {ratings.map((rating) => (
-            <div className="card w-96" key={rating._id}>
+            <div className="" key={rating._id}>
               <div className="card-body">
                 <div className="flex mb-3">
                   <div className="avatar mr-4">
                     <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src={rating.img} alt="" />
+                      <img src={rating?.img || user?.photoURL || Ellips} alt="" />
                     </div>
                   </div>
                   <div>
