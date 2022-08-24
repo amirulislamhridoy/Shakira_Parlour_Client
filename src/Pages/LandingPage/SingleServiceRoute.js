@@ -17,6 +17,7 @@ const SingleServiceRoute = () => {
     axios
       .get(`http://localhost:5000/service/${id}`)
       .then((res) => {
+        console.log(res)
         setService(res.data);
       })
       .catch((err) => {

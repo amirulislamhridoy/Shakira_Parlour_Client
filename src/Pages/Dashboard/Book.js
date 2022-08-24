@@ -1,30 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../icons/credit-card 1.png";
 import paypal from "../../icons/image 17.png";
 import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 import {
-  CardElement,
   Elements,
-  useStripe,
-  useElements,
 } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init'
-import { useQuery } from '@tanstack/react-query'
-import Loading from '../../Shared/Loading/Loading'
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../Shared/Loading/Loading";
+import { signOut } from "firebase/auth";
 
 const Book = () => {
   const [user, loading] = useAuthState(auth);
-  const { isLoading, error, data } = useQuery(['repoData'], () =>
-    fetch('http://localhost:5000/serviceOnly').then(res =>
+  const [price, setPrice] = useState(0);
+  const navigate = useNavigate();
+  const [serviceName, setServiceName] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
+  const { isLoading, error, data } = useQuery(["repoData"], () =>
+    fetch(`http://localhost:5000/willBook?email=${user?.email}`).then((res) =>
       res.json()
     )
-  )
-  if(isLoading){return <Loading />}
+  );
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:5000/create-payment-intent?price=${price}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" , authorization: `Bearer ${localStorage.getItem("accessToken")}`},
+        body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+      })
+      .then((res) => {
+        console.log(res)
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [price]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   const stripePromise = loadStripe(
     "pk_test_51L3yxyGxDf7DYIvzB2dADBrYRLv1V6ynAao5VILfSswUx6XUNts49HImSyLVwIBcx9HPvXz17bEpK5EVFNhIOcYl00TB8aBnAO"
   );
+  const changeFn = (serviceName) => {
+    setServiceName(serviceName);
+    if (serviceName === "Please Select Your Service") {
+      setServiceName(null);
+    }
+    const priceService = data.find(
+      (service) => service.serviceName === serviceName
+    );
+    setPrice(priceService?.taka);
+  };
   return (
     <section className="mt-10 mx-10">
       <input
@@ -44,29 +80,46 @@ const Book = () => {
         readOnly
       />
       <br />
-      <select className="input rounded-none w-7/12 my-1">
-        {data.map(service => <option value={service.name} key={service._id}>{service.name}</option>)}
+      <select
+        onChange={(e) => changeFn(e.target.value)}
+        className="input rounded-none w-7/12 my-1"
+      >
+        <option>Please Select Your Service</option>
+        {data.map((service) => (
+          <option value={service.serviceName} key={service._id}>
+            {service.serviceName}
+          </option>
+        ))}
       </select>
       <br />
       <br />
       <span>Pay with</span>
       <br />
       <div className="flex">
-        <input className="mr-1" type="radio" name='payment' />
+        <input className="mr-1" type="radio" name="payment" />
         <label className="flex">
           <img className="w-5 mr-1" src={Card} alt="" />
           Creadit Card
         </label>
-        <input className="mr-1 ml-8" type="radio" name='payment' />
+        <input className="mr-1 ml-8" type="radio" name="payment" />
         <label className="flex">
           <img className="w-5 mr-1" src={paypal} alt="" />
           Paypal
         </label>
       </div>
-      <div className='mt-5'>
-        <Elements stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
+      <div className="mt-5">
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <Elements stripe={stripePromise}>
+              <CheckoutForm
+                serviceName={serviceName}
+                clientSecret={clientSecret}
+                customerName={user?.displayName}
+                user={user}
+              />
+            </Elements>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -16,10 +16,10 @@ const BookingList = () => {
   }
 
   return (
-    <section className="pt-10 px-7 flex gap-5">
+    <section className="pt-10 px-7 flex gap-5 flex-wrap">
       {data.map((book) => (
-        <div class="card w-96 bg-base-100 shadow-xl">
-          <div class="card-body">
+        <div className="card w-96 bg-base-100 shadow-xl" key={book._id}>
+          <div className="card-body">
             <div className='flex justify-between items-center'>
               <img className="w-14" src={book.img} alt="" />
               {<button className='btn btn-sm'>{book.payment}</button>}
