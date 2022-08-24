@@ -15,6 +15,10 @@ const SingleServiceRoute = ({ date, setDate }) => {
   const [service, setService] = useState({});
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
+
+  if(!date){
+    date = new Date();
+  }
   let footer = format(date, "PP");
 
   useEffect(() => {
@@ -65,12 +69,12 @@ const SingleServiceRoute = ({ date, setDate }) => {
       <Header />
 
       <div className="flex flex-col items-center mt-5">
-        <div className="card shadow-xl w-[355px] p-5">
+        <div className="card shadow-xl w-[320px] sm:w-[355px] p-2 sm:p-5 bg-base-100 mb-5">
           <DayPicker mode="single" selected={date} onSelect={setDate} />
           <b>{footer}</b>
         </div>
 
-        <div className="card w-96 bg-base-100 text-center drop-shadow-xl mt-5">
+        <div className="card w-80 sm:w-96 bg-base-100 text-center drop-shadow-xl mt-5">
           <div className="card-body">
             <img className="w-14 mx-auto" src={service?.img} alt="" />
             <h2 className="text-2xl font-semibold text-center">

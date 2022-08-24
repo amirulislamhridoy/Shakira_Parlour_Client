@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements} from "@stripe/react-stripe-js";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const CheckoutForm = ({ serviceName, clientSecret, customerName, user }) => {
+const CheckoutForm = ({ serviceName, clientSecret, customerName, user, footer }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentSuccess, setPaymentSuccess] = useState("");
@@ -49,11 +44,11 @@ const CheckoutForm = ({ serviceName, clientSecret, customerName, user }) => {
         email: user.email,
         serviceName,
         transactionId: paymentSuccess,
+        date: footer
       };
       axios
         .patch(`http://localhost:5000/payment`, sendData)
         .then(function (response) {
-          console.log(response);
           toast.success("Your payment is success.");
           setPaymentSuccess(paymentIntent?.id);
           setErrorMessage("");

@@ -44,7 +44,7 @@ function App() {
           {admin ? (
             <Route index element={<OrderList />} />
           ) : (
-            <Route index element={<Book />} />
+            <Route index element={<Book date={date} setDate={setDate} />} />
           )}
           <Route path=":addService" element={<AddService />} />
           <Route path="makeAdmin" element={<MakeAdmin />} />
